@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="HenryMemory's blog">
 <meta property="og:description" content="前言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;springmvc是spring家族中非常重要的一个组成部分，不可否认，它的轻量级以及对项目无侵入性的配置让它成为了我们在进行技术选型的时候有了选择它的理由。
 问题背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说起这次的问题，一开始真的是一点头绪">
-<meta property="og:updated_time" content="2016-08-18T09:47:11.664Z">
+<meta property="og:updated_time" content="2016-08-18T09:51:16.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈springmvc的容器">
 <meta name="twitter:description" content="前言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;springmvc是spring家族中非常重要的一个组成部分，不可否认，它的轻量级以及对项目无侵入性的配置让它成为了我们在进行技术选型的时候有了选择它的理由。
@@ -331,7 +331,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意，上面我没有配置它的成员变量，因为我要通过注解的方式注入。如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BootsTrapDataServiceImpl</span> <span class="keyword">implements</span> <span class="title">BootsTrapDataService</span> </span>&#123;</div><div class="line">	<span class="meta">@Autowired</span>(required = <span class="keyword">false</span>)</div><div class="line">	<span class="keyword">private</span> AutoTestDao autoTestDao;</div><div class="line">	<span class="meta">@Autowired</span></div><div class="line">	<span class="keyword">private</span> AdaptorConfigDao adaptorConfigDao;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来，我还在servlet-mvc.xml文件中配置了注解的自动扫描，当然，这个bean是有着其基本的成员变量的，我在成员变量上采取了@autowire的注解方式进行自动注入。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可当我每次执行这个bean里面的成员变量的方法的时候，就会抛出空指针异常。不知道大家有没有看出来这里面存在的问题呢？下面，就来揭晓谜题答案！</p>
-<h4 id="排查问题"><a href="#排查问题" class="headerlink" title="排查问题"></a>排查问题</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出现这样的问题其实是因为我对一个概念理解的不够，那就是我把注解和xml文件配置的方式混用了，而且，bean配置在ioc容器中，但是扫描却是由springmvc中的容器进行的，当然，也就无法注入了。说到这里，我们看到了一个比较新的概念，这个概念就是ioc容器和springmvc是两个不同的容器。而这两个容器间的区别和联系，后面我会再详细说明。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里，其实就体现了封装的特性，为什么这样说呢？我会在另外一篇博文中给出解答。现在，我们可以看出当前我们面我们在看到这个问题的时候，发现对的问题了，那就是对于容器的理解及xml和注解的配置。</p>
+<h4 id="排查问题"><a href="#排查问题" class="headerlink" title="排查问题"></a>排查问题</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出现这样的问题其实是因为我对一个概念理解的不够，那就是我把注解和xml文件配置的方式混用了，而且，bean配置在ioc容器中，但是扫描却是由springmvc中的容器进行的，当然，也就无法注入了。说到这里，我们看到了一个比较新的概念，这个概念就是ioc容器和springmvc是两个不同的容器。而这两个容器间的区别和联系，后面我会再详细说明,在另一篇博客中。</p>
 <h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于我们的service，这是属于公共的模块，我们应该在ioc的容器内对其进行配置，否则的话会很尴尬。因为一旦你配置到了servlet的作用域内，如果某一个ioc内的bean要引用这个service，你会发现，无法引用，也就是会出现no qualified bean的异常。而类似于视图解析、controller这样属于一次请求的一部分的bean，配到springmvc的容器中就可以了。当然，注解和xml共用是可以的，但是你知道的，如果不是一个容器就把人坑美（没）了。所以问题的根源就是对于web容器内spring容器的理解。</p>
 <h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在看到这个问题的时候，发现了在web容器中存在的ioc和springmvc的管理容器之间的联系和区别。我们在有时候遇到一些看似无厘头的问题时候，一定要用心去思考，你有时候看到自己配的就是没问题啊，就是没问题啊，在心里不停地问自己，你要换个思路，把你心里固有的结论推翻一次，只一次，你便有了新的收获！</p>
 
