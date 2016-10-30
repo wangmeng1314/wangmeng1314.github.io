@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangmeng1314.github.io/"/>
-  <updated>2016-08-18T09:51:16.779Z</updated>
+  <updated>2016-08-18T09:52:43.025Z</updated>
   <id>https://wangmeng1314.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://wangmeng1314.github.io/2016/08/18/%E8%B0%88%E8%B0%88springmvc%E7%9A%84%E5%AE%B9%E5%99%A8/"/>
     <id>https://wangmeng1314.github.io/2016/08/18/谈谈springmvc的容器/</id>
     <published>2016-08-18T08:22:17.000Z</published>
-    <updated>2016-08-18T09:51:16.779Z</updated>
+    <updated>2016-08-18T09:52:43.025Z</updated>
     
     <content type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;springmvc是spring家族中非常重要的一个组成部分，不可否认，它的轻量级以及对项目无侵入性的配置让它成为了我们在进行技术选型的时候有了选择它的理由。&lt;/p&gt;
 &lt;h4 id=&quot;问题背景&quot;&gt;&lt;a href=&quot;#问题背景&quot; class=&quot;headerlink&quot; title=&quot;问题背景&quot;&gt;&lt;/a&gt;问题背景&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说起这次的问题，一开始真的是一点头绪都没有，怎么说呢？我在application.xml文件中配置了bean，如下所示：&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;bootsDataService&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;com.weimob.webservices.service.serviceimpl.BootsTrapDataServiceImpl&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -818,7 +818,7 @@
     <link href="https://wangmeng1314.github.io/2016/07/02/git%E6%94%AF%E6%8C%81%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%97%EF%BC%9F/"/>
     <id>https://wangmeng1314.github.io/2016/07/02/git支持大小写吗？/</id>
     <published>2016-07-02T14:31:05.000Z</published>
-    <updated>2016-07-09T09:00:28.077Z</updated>
+    <updated>2016-09-13T10:04:53.633Z</updated>
     
     <content type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;git使用中遇到的坑-git支持大小写吗？&lt;/p&gt;
 &lt;hr&gt;
