@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangmeng1314.github.io/"/>
-  <updated>2016-08-18T09:52:43.025Z</updated>
+  <updated>2017-02-08T03:06:07.603Z</updated>
   <id>https://wangmeng1314.github.io/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>教你快速的查找linux日志</title>
+    <link href="https://wangmeng1314.github.io/2017/02/08/%E6%95%99%E4%BD%A0%E5%BF%AB%E9%80%9F%E7%9A%84%E6%9F%A5%E6%89%BElinux%E6%97%A5%E5%BF%97/"/>
+    <id>https://wangmeng1314.github.io/2017/02/08/教你快速的查找linux日志/</id>
+    <published>2017-02-08T03:02:36.000Z</published>
+    <updated>2017-02-08T03:06:07.603Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一名java的程序员，在本地调试的时候是非常容易的，可以一旦服务部署到了线上的环境，就显得有些力不从心了，本文，阿福将带着你去学习如何快速的查找取得你需要的日志，话不多说，代码撸起来！&lt;/p&gt;
+&lt;h4 id=&quot;问题背景&quot;&gt;&lt;a href=&quot;#问题背景&quot; class=&quot;headerlink&quot; title=&quot;问题背景&quot;&gt;&lt;/a&gt;问题背景&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近，经常去linux系统查询相关的错误日志，你知道的，那是一种多麽让人烦恼的体验，可以说是抓狂，毕竟用惯了windows的同学ctrl+f嗖嗖的就查出来了！&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面，就和阿福一起看看如何去解决这个问题！&lt;/p&gt;
+&lt;h4 id=&quot;解决思路&quot;&gt;&lt;a href=&quot;#解决思路&quot; class=&quot;headerlink&quot; title=&quot;解决思路&quot;&gt;&lt;/a&gt;解决思路&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实际上，讲到日志的搜索，我们首先就想到了grep命令。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;第一步，当然是首先查找日志里面的关键词。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;grep -i -n web &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;.conf&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通过上面的指令我们已经准确的找到问题到底出在了哪里，接下来，我们知道，我们遇到的大部分问题就是异常，那也就是意味着我们要将这个信息取出来啊！这好像有点棘手，我们不能只看一个异常类型吧！&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;解决方案我早都想好了，我们可以采用head命令和tail命令结合起来做这件事。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;head - &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;.conf | tail -n &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上面的命令是这样的，head首先取出文档的前15行然后将这15行作为参数传递给后面的tail命令，然后在这15行中取出最后的五行，阿偶，那你算算实际上取得的是多少行！当然是自己算吧！&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;事情到了这里就完了吗，不对，我们要是想把它保存起来方便随时查看肿么办！别怕，我们输出重定向不就好了。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;head - &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;.conf | tail -n &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;  &amp;gt; info.conf&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;到了这里，大功告成!&lt;/p&gt;
+&lt;h4 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;今天我们进行了一个日志的快速查找保存，对管道和重定向有了不错的理解，再接再厉！大家一起努力！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一名java的程序员，在本地调试的时候是
+    
+    </summary>
+    
+      <category term="linux技巧" scheme="https://wangmeng1314.github.io/categories/linux%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="linux 日志" scheme="https://wangmeng1314.github.io/tags/linux-%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring-mvc容器和根容器的区别和联系</title>
+    <link href="https://wangmeng1314.github.io/2017/02/08/spring-mvc%E5%AE%B9%E5%99%A8%E5%92%8C%E6%A0%B9%E5%AE%B9%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E8%81%94%E7%B3%BB/"/>
+    <id>https://wangmeng1314.github.io/2017/02/08/spring-mvc容器和根容器的区别和联系/</id>
+    <published>2017-02-08T02:29:54.000Z</published>
+    <updated>2017-02-08T02:29:54.510Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>谈谈springmvc的容器</title>
@@ -330,7 +375,7 @@
     <link href="https://wangmeng1314.github.io/2016/07/11/fiddler%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E7%B2%BE%E5%A6%99%E7%94%A8%E6%B3%95/"/>
     <id>https://wangmeng1314.github.io/2016/07/11/fiddler在工作中的精妙用法/</id>
     <published>2016-07-11T15:35:03.000Z</published>
-    <updated>2016-07-24T08:05:22.826Z</updated>
+    <updated>2017-02-08T03:05:00.759Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fiddler作为轻量级的抓包神器，和我一起领略fiddler的美妙之处吧！&lt;/p&gt;
