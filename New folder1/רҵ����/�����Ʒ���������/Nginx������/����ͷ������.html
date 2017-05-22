@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>代理和反向代理</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>代理和反向代理</h1>
+<p>
+Created Tuesday 10 January 2017<br>
+</p>
+
+<h2>1、代理：</h2>
+<p>
+<div style='padding-left: 30pt'>
+作为web开发，实际上我们很多的时候都会接触到代理。<br>
+</div>
+而我们口中产生常说的代理实际上就是正向代理，正向代理指的是代理机是由我们控制的，而我们也明确的知道我们访问的是代理。当然，这是作为一个用户的角度而言的。<br>
+</p>
+
+<h2>2、反向代理</h2>
+<p>
+<div style='padding-left: 30pt'>
+相比较上面的概念，我们就能够知道反向代理实际上就是我们无法分辨代理机器，认为那就是真实的我们想要访问的服务器。<br>
+</div>
+这一点上我们可以很明确的知道。<br>
+    <strong>location / {</strong><br>
+**        proxy_pass <a href="http://localhost:8080/" title="http://localhost:8080/" class="http">http://localhost:8080/</a>;**<br>
+<strong>    }</strong><br>
+上述的配置就是反向代理的典型写法。就是说会将nginx监听到的请求转发到我们后面配置到的地址上去。<br>
+</p>
+
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

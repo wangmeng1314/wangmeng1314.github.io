@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Tuesday 21 Mar 2017</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>Tuesday 21 Mar 2017</h1>
+
+<h1>1、那些关于促销的事</h1>
+<p>
+1.1<br>
+促销活动共有四个分类，分为满减、满折、满包邮、X元N件。<br>
+前三个分类又会细化为满元减和满件减。当在不同的维度上满足促销的要求的时候，均会触发优惠。<br>
+1.2<br>
+促销活动是互斥的，也就是在同一件商品上不会同时有两个促销活动，但是这仅仅是针对于满减、满折、X元N件而已。<br>
+因为如果这三种活动不互斥，同时存在于一个促销活动上。促销的优惠又该如何计算呢？<br>
+1.3<br>
+由于促销活动的互斥，导致的直接结果就是在后台添加商品的时候如果一件商品已经添加到另一个促销活动中，另一个促销活动的添加商品<br>
+页面将会找不到，这是由于1.2的属性导致。<br>
+1.4<br>
+促销活动时间限制存在，这是每一种活动的特质，当然，促销的状态分为未开始、进行中、结束。<br>
+B端的客户可能会在此有问题，添加了促销活动，显示已经成功，但是为何APP上无法看到效果，那请关注促销活动的当前状态。<br>
+1.5<br>
+对于满包邮而言是会校验地区的，当不满足地区校验的时候，即使满足了促销的门槛，依旧不会触发优惠。<br>
+1.6<br>
+对于满减和满折有上不封顶的概念，但是其仅仅针对于满元减和满件减。<br>
+1.7<br>
+对于1.6所提到的上不封顶，其具体的概念可以举例如下：<br>
+假设A活动第一层级满100减去20元。<br>
+那么，当达到200元，将会减去40元。<br>
+300元将会减去60元。<br>
+依次类推，上不封顶。<br>
+1.8<br>
+对于上不封顶的促销活动，其只允许拥有一个层级，也就是说勾选了上不封顶的促销活动，将无法继续添加活动的层级。<br>
+1.9<br>
+促销的活动层级要求的是逐级递增，不允许下一层级比上一层级低，此处前端有校验，不做赘述。<br>
+1.10<br>
+促销活动目前和新凑单页关联较大。<br>
+新凑单页上面的TAB页展示的只是一个促销活动的第一层级<br>
+假设用户添加了A促销活动，用户添加了三个层级。然而实际显示只是第一层级。<br>
+这是当时的产品设计规则，但是B端用户可能不理解。特此说明。<br>
+但是当用户满足更高层级的时候将会触发更高层级的优惠。<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

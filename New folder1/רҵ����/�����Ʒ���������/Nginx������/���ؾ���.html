@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>负载均衡</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>负载均衡</h1>
+<p>
+Created Tuesday 10 January 2017<br>
+<a href="http://www.cnblogs.com/xiaogangqq123/archive/2011/03/04/1971002.html" title="http://www.cnblogs.com/xiaogangqq123/archive/2011/03/04/1971002.html" class="http">http://www.cnblogs.com/xiaogangqq123/archive/2011/03/04/1971002.html</a><br>
+在http节点里添加:<br>
+#定义负载均衡设备的 Ip及设备状态 <br>
+upstream myServer {   <br>
+    server 127.0.0.1:9090 down; <br>
+    server 127.0.0.1:8080 weight=2; <br>
+    server 127.0.0.1:6060; <br>
+    server 127.0.0.1:7070 backup; <br>
+}<br>
+在需要使用负载的Server节点下添加<br>
+proxy_pass <a href="http://myServer" title="http://myServer" class="http">http://myServer</a>;<br>
+upstream 每个设备的状态:<br>
+<strong>down 表示单前的server暂时不参与负载 </strong><br>
+<strong>weight  默认为1.weight越大，负载的权重就越大。 </strong><br>
+<strong>max_fails ：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误 </strong><br>
+<strong>fail_timeout:max_fails 次失败后，暂停的时间。 </strong><br>
+<strong>backup： 其它所有的非backup机器down或者忙的时候，请求backup机器。所以这台机器压力会最轻。</strong><br>
+nginx官方文档：<br>
+<a href="https://www.nginx.com/resources/admin-guide/load-balancer/#overview" title="https://www.nginx.com/resources/admin-guide/load-balancer/#overview" class="https">https://www.nginx.com/resources/admin-guide/load-balancer/#overview</a><br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

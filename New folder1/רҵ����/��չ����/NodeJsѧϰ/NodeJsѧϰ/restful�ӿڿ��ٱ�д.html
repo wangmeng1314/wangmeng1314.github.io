@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>restful接口快速编写</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>restful接口快速编写</h1>
+<p>
+Created Wednesday 08 February 2017<br>
+</p>
+
+<h2>1、目的</h2>
+<p>
+探究node如何搭建restful格式的接口<br>
+npm install restify<br>
+使用如上的node模块即可<br>
+</p>
+
+<h2>2、examples</h2>
+<p>
+<div style='padding-left: 30pt'>
+上面的例子来源于官网，<br>
+</div>
+<strong>var restify = require('restify');</strong><br>
+<strong>function respond(req, res, next) {</strong><br>
+<strong>  res.send('hello ' + req.params.name);</strong><br>
+<strong>  next();</strong><br>
+<strong>}</strong><br>
+<strong>var server = restify.createServer();</strong><br>
+<strong>server.get('/hello/:name', respond);</strong><br>
+<strong>server.head('/hello/:name', respond);</strong><br>
+<strong>server.listen(8080, function() {</strong><br>
+<strong>  console.log('%s listening at %s', server.name, server.url);</strong><br>
+<strong>});</strong><br>
+</p>
+
+<h2>3、官网地址</h2>
+<p>
+<a href="http://restify.com/" title="http://restify.com/" class="http">http://restify.com/</a><br>
+你甚至可以采用正则表达式去匹配对应的请求。<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

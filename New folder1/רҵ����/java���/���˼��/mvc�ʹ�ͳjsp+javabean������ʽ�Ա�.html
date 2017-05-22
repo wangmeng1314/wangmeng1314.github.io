@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>mvc和传统jsp+javabean开发方式对比</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>mvc和传统jsp+javabean开发方式对比</h1>
+<p>
+Created Thursday 16 February 2017<br>
+1、jsp+javabean<br>
+这是最开始的web开发的基本模型，这种方式基本将脚本和html代码混合在一起，甚至数据库的连接代码也写在了jsp脚本内。<br>
+这导致的直接结果就是后端的逻辑和前端的混合在一起，其实在这种开发方式流行的时候甚至前端和后端的开发职责都没有明确，那时候的<br>
+分工基本上是这样的。前端写好页面，然后，由后端去套页面。总体来看，这种开发方式的效率还不错，但是实际上，<br>
+这种传统的模式开发出来的web服务维护起来实在是太麻烦了。<br>
+2、mvc模式<br>
+mvc模式是对于传统的开发模型的一次比较大的优化，这里将一个完整的web服务划分成了model、view、和controller。<br>
+这三层的职责分别是：model负责数据的准备，view负责展示。而controller则负责网站的路由。<br>
+比较典型的有struts2以及Spring-MVC等框架。对于spring-MVC我是用的比较熟的。<br>
+当然，这里的话，jsp仍旧发挥着重要的作用。jsp作为view层，只是用来展示数据，当然，期望的是没有任何的代码逻辑。但是<br>
+实际上这里还是会有少量的代码逻辑用来初始化整个页面。<br>
+但是，jsp需要编译，性能上可能会相对较差。<br>
+实际上，如果jsp页面在这里限定死不能使用脚本，只能使用相关的标签的话，那么这里的jsp也就只是相当于数据模板的作用。<br>
+而模板语言freemarker的出现则进一步的促进了mvc模式的发展。<br>
+3、前后端分离<br>
+可以说，只有在这里才真的有了前端的角色的出现。<br>
+这可以说是促进了生产力的极大解放。<br>
+node的出现，让前端接触后台成为了可能，也就是说，前端的页面的展示逻辑和数据的填充完全由前端的同学控制，<br>
+数据的提供则由后端的同学采用restful的格式提供数据，目前最常见的就是json格式的数据。<br>
+这里的话可以说是极大的促进了生产的效率，因为传统的串行开发方式变成了目前的并行开发方式。<br>
+</p>
+
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

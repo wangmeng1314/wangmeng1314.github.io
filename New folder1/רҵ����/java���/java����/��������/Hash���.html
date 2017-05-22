@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Hash相关</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>Hash相关</h1>
+<p>
+Created Monday 13 March 2017<br>
+</p>
+
+<p>
+1、HashSet可以保证不重复。<br>
+但是如果是我们的VO类，则必须重写hashCode方法和equals方法<br>
+但是如果用上了lombok的@Data注解的话，这些lombok都会帮我们做好。<br>
+当然，要想排查这个问题，只需要打开源代码，就可以发现<br>
+<a href="https://projectlombok.org/features/Data.html" title="https://projectlombok.org/features/Data.html" class="https">https://projectlombok.org/features/Data.html</a><br>
+上面的URL就是他的文档<br>
+当然，你依旧可以将Data改为Value等就可以查看相应的别的注解的相关文档。<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

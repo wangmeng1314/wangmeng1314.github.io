@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>freemarker</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>freemarker</h1>
+<p>
+Created Monday 09 January 2017<br>
+</p>
+
+<h2>1、数据的格式化</h2>
+<p>
+如果遇到数据需要格式化的时候。<br>
+freemarker数字格式化可以在两个地方设置，一个是全局的，即在freemarker.properties文件中设置number_format，还有一个是使用string指令来控制数据的输出格式。例如：<br>
+<strong>${num?string('0.00')}</strong><br>
+<strong>如果小数点后不足两位，用 0 代替</strong><br>
+<strong>${num?string('#.##')}</strong><br>
+<strong>如果小数点后多余两位，就只保留两位，否则输出实际值</strong><br>
+<strong>输出为：1239765.46</strong><br>
+<strong>${num?string(',###.00')}</strong><br>
+<strong>输出为：1,239,765.46</strong><br>
+<strong>整数部分每三位用 , 分割，并且保证小数点后保留两位，不足用 0 代替</strong><br>
+<strong>${num?string(',###.##')}</strong><br>
+<strong>输出为：1,239,765.46</strong><br>
+<strong>整数部分每三位用 , 分割，并且小数点后多余两位就只保留两位，不足两位就取实际位数，可以不包含小数点</strong><br>
+<strong>${num?string('000.00')}</strong><br>
+<strong>输出为：012.70</strong><br>
+<strong>整数部分如果不足三位（000），前面用0补齐，否则取实际的整数位</strong><br>
+<strong>${num?string('###.00')}</strong><br>
+<strong>等价于</strong><br>
+<strong>${num?string('#.00')}</strong><br>
+<strong>输出为：12.70</strong><br>
+<strong>整数取实际的位数</strong><br>
+关于string指令的更多用法，可以访问官方文档：<a href="http://freemarker.sourceforge.net/docs/ref_builtins_number.html#ref_builtin_string_for_number" title="http://freemarker.sourceforge.net/docs/ref_builtins_number.html#ref_builtin_string_for_number" class="http">http://freemarker.sourceforge.net/docs/ref_builtins_number.html#ref_builtin_string_for_number</a><br>
+</p>
+
+<h2>2、循环遍历数字</h2>
+<p>
+<strong>&lt;#list 1..max as i&gt;    </strong><br>
+<strong>  &lt;li&gt;&lt;a href="#"&gt;${i}&lt;/a&gt;&lt;/li&gt;</strong><br>
+<strong>&lt;/#list&gt;</strong><br>
+上面的代码可以使用Freemarker循环遍历数字，适用于我们需要取到下标的地方。<br>
+</p>
+
+<p>
+但是这个的话有一个非常大的问题，那就是实际上我们的只要在遍历的变量上这样做即可：<br>
+<code>promotionDetailVo_index即可取到下标</code><br>
+</p>
+
+<h2>3、freemarker在展示boolean值的时候，是无法直接展示的。而必须将其转化为字符串之后才能作相应的匹配。 key：boolean</h2>
+<p>
+例子如下：   <br>
+&lt;#if deliveryTemplate.isDefault?string("true","false")=="false"&gt;<br>
+                        &lt;td&gt;&lt;i class="fa fa-check text-success"&gt;&lt;/i&gt;<br>
+   &lt;/#if&gt;<br>
+</p>
+
+<h2>4、数字的使用</h2>
+
+
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

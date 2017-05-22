@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>myBatis动态sql</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>myBatis动态sql</h1>
+<p>
+Created Wednesday 18 January 2017<br>
+</p>
+
+<p>
+1、foreach<br>
+<strong>&lt;select id="selectPostIn" resultType="domain.blog.Post"&gt;</strong><br>
+<strong>  SELECT </strong>*<br>
+<strong>  FROM POST P</strong><br>
+<strong>  WHERE ID in</strong><br>
+<strong>  &lt;foreach item="item" index="index" collection="list"</strong><br>
+<strong>      open="(" separator="," close=")"&gt;</strong><br>
+<strong>        #{item}</strong><br>
+<strong>  &lt;/foreach&gt;</strong><br>
+<strong>&lt;/select&gt;</strong><br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

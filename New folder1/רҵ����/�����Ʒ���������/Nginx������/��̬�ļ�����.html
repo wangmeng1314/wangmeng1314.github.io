@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>静态文件处理</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>静态文件处理</h1>
+<p>
+Created Tuesday 10 January 2017<br>
+背景：<br>
+实际的网站架设中我们需要将动态的文件同动态文件的访问隔离开。因为一般而言，像tomcat等服务器对于静态文件的访问支持并不是特别的强悍，因此，网站的动静分离也就显得格外的重要。<br>
+解决思路：<br>
+<strong>location ~ \.(gif|jpg|png)$ {</strong><br>
+<strong>    root /data/images;</strong><br>
+<strong>}</strong><br>
+这句命令的含义是将会直接去匹配后缀为gif、jpg、png的文件。如果匹配成功，将会到/data/images下访问静态文件<br>
+ps：当然，能做CDN的就不需要了。<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

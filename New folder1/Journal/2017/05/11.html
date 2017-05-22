@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Thursday 11 May 2017</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>Thursday 11 May 2017</h1>
+
+<p>
+遇到的问题：key:redis-question<br>
+1、同时发现自己的redisClient可以正常获取实例但是在进行相关操作的时候从连接池没有获取到连接。当时是想不通到底什么原因？遂从如下几个方面去排查：<br>
+redis有无设置密码<br>
+redis的密码鉴权是否成功<br>
+redis的基本设置有无成功<br>
+按照同事的描述远程登录服务器，鉴权的时候果然出现了问题。发现原来他的ip地址和端口号正确。而密码是错误的。实际上，这里有一个小小的点需要着重的注意下，那就是redis虽然可以设置密码，但是没有密码你依旧可以登录到redis的服务器上，不过没有通过鉴权无法<br>
+进行任何的操作罢了。<br>
+1、写完es的基本安装及配置教程<br>
+2、redis的基本常用命令的总结<br>
+3、<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

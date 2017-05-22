@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>高级指令</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>高级指令</h1>
+<p>
+Created Tuesday 10 January 2017<br>
+1、网络基本命令<br>
+ping 测试网络是否通畅<br>
+ifconfig 查看网卡的一些参数<br>
+netstat -ant 列举出当前的所有tcp连接的端口号，一般用来确认服务端口是否正常监听<br>
+2、文件高级操作<br>
+压缩文件 zip 文件名 target | unzip 解压缩<br>
+tar [主选项+辅选项] 文件或者目录 <a href="" title="examples: tar" class="page">examples: tar</a> -zxvf 文件<br>
+使用该命令时，主选项是必须要有的，它告诉tar要做什么事情，辅选项是辅助使用的，可以选用。<br>
+主选项：<br>
+c 创建新的档案文件。如果用户想备份一个目录或是一些文件，就要选择这个选项。相当于打包。<br>
+x 从档案文件中释放文件。相当于拆包。<br>
+t 列出档案文件的内容，查看已经备份了哪些文件。<br>
+特别注意，在参数的下达中， c/x/t 仅能存在一个！不可同时存在！因为不可能同时压缩与解压缩<br>
+辅助选项：<br>
+-z ：是否同时具有 gzip 的属性？亦即是否需要用 gzip 压缩或解压？ 一般格式为xx.tar.gz或xx. tgz<br>
+-j ：是否同时具有 bzip2 的属性？亦即是否需要用 bzip2 压缩或解压？一般格式为xx.tar.bz2  <br>
+-v ：压缩的过程中显示文件！这个常用<br>
+-f ：使用档名，请留意，在 f 之后要立即接档名喔！不要再加其他参数！<br>
+-p ：使用原文件的原来属性（属性不会依据使用者而变）<br>
+--exclude FILE：在压缩的过程中，不要将 FILE 打包！<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

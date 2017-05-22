@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>基本指令</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>基本指令</h1>
+<p>
+Created Tuesday 10 January 2017<br>
+</p>
+
+<h2>1、目录相关</h2>
+<p>
+cd 切换目录 <br>
+更多用法：cd <a href="../linux%E7%9B%B8%E5%85%B3" title="../" class="file">../</a> 切换到上一级目录 cd / 切换到当前目录的根目录  cd ~ 切换到当前用户的主目录<br>
+ls 列举当前目录下的所有文件 <br>
+更多用法：ll 自动换行列举<br>
+</p>
+
+<h2>2、基本的文件/目录操作</h2>
+<p>
+cp 复制目录<br>
+rm 删除目录及文件 rm -rf 慎用，递归删除目录下的所有文件<br>
+mv 文件改名 文件及目录移动<br>
+</p>
+
+<h2>3、进程相关</h2>
+<p>
+ps -ef 列出当前系统下所有在执行的程序的进程<br>
+ps -aux 列出当前系统的所有进程，并能够查看其cpu及相关内存的使用情况<br>
+下面是详细介绍：<br>
+</p>
+
+<h2>-----------------------------------------------------------------------------------------------------------------------------</h2>
+<p>
+USER：该 process 属于那个使用者账号的？<br>
+<ul>
+<li>PID ：该 process 的号码。</li>
+<li>%CPU：该 process 使用掉的 CPU 资源百分比；</li>
+<li>%MEM：该 process 所占用的物理内存百分比；</li>
+<li>VSZ ：该 process 使用掉的虚拟内存量 (Kbytes)</li>
+<li>RSS ：该 process 占用的固定的内存量 (Kbytes)</li>
+<li>TTY ：该 process 是在那个终端机上面运作，若与终端机无关，则显示 ?，另外， tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。</li>
+<li>STAT：该程序目前的状态，主要的状态有：</li>
+</ul>
+o R ：该程序目前正在运作，或者是可被运作；<br>
+o S ：该程序目前正在睡眠当中 (可说是 idle 状态啦！)，但可被某些讯号 (signal) 唤醒。<br>
+o T ：该程序目前正在侦测或者是停止了；<br>
+o Z ：该程序应该已经终止，但是其父程序却无法正常的终止他，造成 zombie (僵尸) 程序的状态<br>
+<ul>
+<li>START：该 process 被触发启动的时间；</li>
+<li>TIME ：该 process 实际使用 CPU 运作的时间。</li>
+<li>COMMAND：该程序的实际指令为何？</li>
+</ul>
+</p>
+
+<h2>----------------------------------------------------------------------------------------------------------------------------</h2>
+
+<h2>4、用户相关</h2>
+<p>
+passwd username 修改用户密码<br>
+useradd username 添加用户<br>
+</p>
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>

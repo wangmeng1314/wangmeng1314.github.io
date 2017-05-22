@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>基本概念</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>基本概念</h1>
+<p>
+Created Sunday 08 January 2017<br>
+</p>
+
+<h2>1、Node.js模块概念：</h2>
+<p>
+事实上，NodeJs也是基于模块间的依赖来进行项目架构的搭建的，事实上，我们应该掌握一些基本模块的使用：<br>
+下面是一些基本的用法：<br>
+首先定义函数：<br>
+moudle.js内容如下：<br>
+<em>function hello() {</em><br>
+<em>    console.log('Hello');</em><br>
+<em>}</em><br>
+<em>function world() {</em><br>
+<em>    console.log('World');</em><br>
+<em>}</em><br>
+</p>
+
+<h3>1.1 module.exports和exports(引入外部模块)</h3>
+<p>
+引入外部模块有两种方式：<br>
+</p>
+
+<h4>1.1.1 exports</h4>
+<p>
+在moudle.js中添加<br>
+<em>exports.hello = hello;</em><br>
+<em>exports.world = world;</em><br>
+</p>
+
+<h3>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h3>
+<p>
+之后在需要的模块中引入：<br>
+var hello = require('./mymodule');//var hello = require('./mymodule.js');同理<br>
+接下来可以使用其中的函数了。<br>
+</p>
+
+<h4>1.1.2 module.exports</h4>
+<p>
+moudle.js还可以改为如下格式：<br>
+<em>function Hello() {</em><br>
+<em>    this.hello = function() {</em><br>
+<em>        console.log('Hello');</em><br>
+<em>    };</em><br>
+<em>    this.world = function() {</em><br>
+<em>        console.log('World');</em><br>
+<em>    };</em><br>
+<em>}</em><br>
+module.exports = Hello;<br>
+</p>
+
+<h3>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h3>
+
+<p>
+如下格式便可以使用其中的函数：<br>
+<em>var Hello = require('./mymodule');</em><br>
+<em>var hello = new Hello();</em><br>
+<em>hello.hello(); </em> &gt;&gt; Hello//<br>
+<em>hello.world(); </em> &gt;&gt; World//<br>
+</p>
+
+<h2>1.2 module.exports和exports区别</h2>
+<p>
+从上面的内容我们可以看得出来，实际上他们还是有一定的区别的，理解如下：<br>
+</p>
+
+<h3>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h3>
+<p>
+module是一个对象，每个模块中都有一个module对象，module是当前模块的一个引用。<br>
+module.exports对象是Module系统创建的，而exports可以看作是对module.exports对象的一个引用。<br>
+在模块中require另一个模块时，以module.exports的值为准，因为有的情况下，module.exports和exports它们的值是不同的。<br>
+</p>
+
+<h3>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h3>
+
+<h2>2、Node js的包;</h2>
+<p>
+包用于管理多个模块及其依赖关系，可以对多个模块进行封装，包的根目录必须包含package.json文件，package.json文件是CommonJS规范用于描述包的文件，符合CommonJS规范的package.json文件应该包含以下字段：<br>
+<ul>
+<li>name：包名。包名是唯一的，只能包含小写字母、数字和下划线。</li>
+<li>version：包版本号。</li>
+<li>description：包说明。</li>
+<li>keywords：关键字数组。用于搜索。</li>
+<li>homepage：项目主页。</li>
+<li>bugs：提交bug的地址。</li>
+<li>license：许可证。</li>
+<li>maintainers：维护者数组。</li>
+<li>contributors：贡献者数组。</li>
+<li>repositories：项目仓库托管地址数组。</li>
+<li>dependencies：包依赖。</li>
+</ul>
+</p>
+
+<h2>3、npm包管理工具</h2>
+<p>
+类似于我们java的maven<br>
+</p>
+
+<h2>4、NodeJs的事件监听机制</h2>
+<p>
+为事件绑定事件处理程序，可以使用emitter.addListener(event, listener)和emitter.on(event, listener)，它们的作用是完全一样的。传入的参数是事件（event）和处理函数（listener）。<br>
+绑定事件的示例：<br>
+<em>var http = require('http');</em><br>
+<em>var server = http.createServer();</em><br>
+//<em> 为request事件绑定处理函数</em><br>
+//<em> 也可以使用server.addListener</em><br>
+<em>server.on('request', function(req, res) {</em><br>
+<em>    res.writeHead(200, { 'Content-Type': 'text/plain' });</em><br>
+<em>    res.write('shiyanlou');</em><br>
+<em>    console.log('shiyanlou');</em><br>
+<em>    res.end();</em><br>
+<em>});</em><br>
+<em>server.listen(1337, '127.0.0.1');</em><br>
+//console.log('Server running at <a href="http://127.0.0.1:1337/" title="http://127.0.0.1:1337/" class="http">http://127.0.0.1:1337/</a>');<br>
+</p>
+
+<h2>5、express项目修改js后重新启动</h2>
+<p>
+npm i nodemon -g<br>
+nodemon app.js<br>
+</p>
+
+<h2>6、node js的异步IO的概念</h2>
+<p>
+目前最熟悉的java是基于同步IO的，而node是基于异步IO的<br>
+node的这种异步IO的回调机制比较像操作系统的中断机制。<br>
+</p>
+
+
+
+
+
+
+<!-- End wiki content -->
+
+	</body>
+
+</html>
